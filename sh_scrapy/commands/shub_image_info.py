@@ -3,6 +3,8 @@ from __future__ import print_function
 import json
 import subprocess
 
+from loguru import logger
+
 from scrapy.commands import ScrapyCommand
 
 
@@ -14,6 +16,8 @@ class Command(ScrapyCommand):
         "printf 'Linux packages:\n'", "dpkg -l",
         "printf '\nPython packages:\n'", "pip freeze",
     ])
+
+    logger.remove()
 
     def short_desc(self):
         return "Print JSON-encoded project metadata."
